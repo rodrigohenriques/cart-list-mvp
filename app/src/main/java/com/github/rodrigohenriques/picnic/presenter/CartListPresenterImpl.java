@@ -95,7 +95,9 @@ public class CartListPresenterImpl implements CartListPresenter {
 
     @Override
     public void clickedAt(Product product, int position) {
-
+        if (hasViewAttached()) {
+            mCartListView.openProductDetail(product.identifier);
+        }
     }
 
     private boolean shouldQueryData() {

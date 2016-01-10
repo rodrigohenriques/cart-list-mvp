@@ -1,5 +1,6 @@
 package com.github.rodrigohenriques.picnic.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -49,6 +50,13 @@ public class CartListActivity extends BaseActivity implements CartListView, Cart
         CartListAdapter adapter = new CartListAdapter(this, products);
         adapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void openProductDetail(String identifier) {
+        Intent intent = new Intent(this, ProductDetailActivity.class);
+        intent.putExtra(ProductDetailActivity.PRODUCT_ID, identifier);
+        startActivity(intent);
     }
 
     @Override
