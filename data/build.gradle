@@ -1,14 +1,18 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    def application = rootProject.ext.application
+    def versions = rootProject.ext.versions
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
     }
     buildTypes {
         release {
@@ -19,7 +23,20 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    def dependencies = rootProject.ext.dependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    compile project(':domain')
+    compile dependencies.appcompat_v7
+    compile dependencies.support_annotations
+    compile dependencies.retrofit
+    compile dependencies.jackson_converter
+    compile dependencies.dagger2
+
+    apt dependencies.dagger2_compiler
+
+    provided dependencies.jsr250
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.hamcrest
 }
