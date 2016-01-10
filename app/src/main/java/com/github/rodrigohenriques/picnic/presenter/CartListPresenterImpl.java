@@ -89,14 +89,9 @@ public class CartListPresenterImpl implements CartListPresenter {
     }
 
     @Override
-    public void loadCartList() {
-
-    }
-
-    @Override
-    public void clickedAt(Product product, int position) {
+    public void clickedAt(ProductViewModel product, int position) {
         if (hasViewAttached()) {
-            mCartListView.openProductDetail(product.identifier);
+            mCartListView.openProductDetail(product);
         }
     }
 

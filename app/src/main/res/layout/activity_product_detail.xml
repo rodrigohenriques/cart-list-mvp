@@ -26,26 +26,13 @@
             app:expandedTitleTextAppearance="@style/ProductDetailExpandedTitle"
             android:fitsSystemWindows="true">
 
-            <FrameLayout
+            <com.github.rodrigohenriques.picnic.ui.custom.SquareImageView
+                android:id="@+id/imageview_product_detail_cover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
                 app:layout_collapseMode="parallax"
-                android:fitsSystemWindows="true">
-
-                <br.com.suamusica.app.ui.custom.SquareImageView
-                    android:id="@+id/imageview_product_detail_cover"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
-                    android:fitsSystemWindows="true"/>
-
-                <RelativeLayout
-                    android:id="@+id/view_product_detail_cover_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_gravity="bottom" />
-            </FrameLayout>
-
+                android:fitsSystemWindows="true"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

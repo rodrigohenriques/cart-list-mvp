@@ -2,7 +2,6 @@ package com.github.rodrigohenriques.picnic.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +11,8 @@ import com.github.rodrigohenriques.picnic.presenter.CartListPresenter;
 import com.github.rodrigohenriques.picnic.ui.adapter.CartListAdapter;
 import com.github.rodrigohenriques.picnic.view.CartListView;
 import com.github.rodrigohenriques.picnic.viewmodel.ProductViewModel;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class CartListActivity extends BaseActivity implements CartListView, Cart
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_products;
+        return R.layout.activity_cart_list;
     }
 
     @Override
@@ -53,14 +54,14 @@ public class CartListActivity extends BaseActivity implements CartListView, Cart
     }
 
     @Override
-    public void openProductDetail(String identifier) {
+    public void openProductDetail(ProductViewModel productViewModel) {
         Intent intent = new Intent(this, ProductDetailActivity.class);
-        intent.putExtra(ProductDetailActivity.PRODUCT_ID, identifier);
+        intent.putExtra(ProductDetailActivity.PRODUCT, Parcels.wrap(productViewModel));
         startActivity(intent);
     }
 
     @Override
     public void onClick(ProductViewModel product, int position) {
-        Snackbar.make(mRecyclerView, product.getName(), Snackbar.LENGTH_LONG).show();
+        mCartListPresenter.clickedAt(product, position);
     }
 }

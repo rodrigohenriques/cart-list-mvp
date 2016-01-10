@@ -44,7 +44,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         final ProductViewModel product = mProducts.get(position);
 
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(product.getPrice());
+        holder.productPrice.setText(product.getFormattedPrice());
 
         Picasso.with(mContext)
                 .load(product.getImageUrl())

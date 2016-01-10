@@ -3,7 +3,6 @@ package com.github.rodrigohenriques.domain.interactor;
 import com.github.rodrigohenriques.domain.entities.Product;
 import com.github.rodrigohenriques.domain.repository.ProductRepository;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,7 +23,7 @@ public class GetCartListUseCaseImpl extends AbstractUseCase<Void, List<Product>>
     }
 
     @Override
-    protected List<Product> executeOnBackground(Void aVoid) throws IOException {
+    protected List<Product> executeOnBackground(Void aVoid) throws Exception {
         return mProductRepository.getCartList();
     }
 }
