@@ -1,6 +1,8 @@
 package com.github.rodrigohenriques.data.internal.di;
 
 import com.github.rodrigohenriques.data.api.PicNicApi;
+import com.github.rodrigohenriques.data.repository.RemoteProductRepository;
+import com.github.rodrigohenriques.domain.repository.ProductRepository;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,5 +19,9 @@ public class DataModule {
                 .build();
 
         return retrofit.create(PicNicApi.class);
+    }
+
+    @Provides public ProductRepository provideProductRepository(RemoteProductRepository remoteProductRepository) {
+        return remoteProductRepository;
     }
 }
