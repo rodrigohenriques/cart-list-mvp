@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.activities.ProductDetailActivity"
+            android:label="@string/title_activity_product_detail"
+            android:parentActivityName=".ui.activities.CartListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.rodrigohenriques.picnic.ui.activities.CartListActivity" />
+        </activity>
     </application>
 
 </manifest>

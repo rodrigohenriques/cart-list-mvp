@@ -1,7 +1,5 @@
 package com.github.rodrigohenriques.domain.interactor;
 
-import java.io.IOException;
-
 public abstract class AbstractUseCase<Input, Result> implements UseCase {
     protected Input mInput;
     protected Callback<Result> mCallback;
@@ -32,5 +30,5 @@ public abstract class AbstractUseCase<Input, Result> implements UseCase {
         }
     }
 
-    protected abstract Result executeOnBackground(Input input) throws IOException;
+    protected abstract Result executeOnBackground(Input input) throws Exception;
 }

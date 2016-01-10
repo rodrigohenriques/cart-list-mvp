@@ -26,7 +26,7 @@ public class RemoteProductRepository implements ProductRepository {
     }
 
     @Override
-    public List<Product> getCartList() throws IOException {
+    public List<Product> getCartList() throws Exception {
         Call<CartListResponse> call = mPicNicApi.getCartList();
 
         Response<CartListResponse> response;
@@ -35,7 +35,20 @@ public class RemoteProductRepository implements ProductRepository {
 
             if (response.isSuccess()) {
                 CartListResponse cartListResponse = response.body();
-                ListMarshaller<ProductResponse, Product> listMarshaller = new ListMarshaller<>(new ProductResponseMarshaller());
+
+                ListMarshaller<ProductResponse, Product> listMarshaller = new ListMarshaller<>(new ProductResponseMarshaller() {
+                    @Override
+                    public Product marshal(ProductResponse productResponse) {
+                        try {
+                            Product productDetail = getProductDetail(productResponse.identifier);
+                            return productDetail;
+                        } catch (IOException e) {
+                            // TODO: should review this strategy before being productive
+                            return super.marshal(productResponse);
+                        }
+                    }
+                });
+
                 return listMarshaller.marshal(cartListResponse.products);
             } else {
                 throw new IOException("should implement this scenario correctly: " + response.message());

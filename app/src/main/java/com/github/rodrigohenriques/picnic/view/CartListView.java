@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CartListView extends IView {
     void showData(List<ProductViewModel> products);
+    void openProductDetail(ProductViewModel product);
 }

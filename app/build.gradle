@@ -41,9 +41,11 @@ dependencies {
     compile dependencies.recycler
     compile dependencies.cardview
     compile dependencies.picasso
+    compile dependencies.parceler_api
     compile dependencies.dagger2
 
     apt dependencies.dagger2_compiler
+    apt dependencies.parceler
 
     provided dependencies.jsr250
 

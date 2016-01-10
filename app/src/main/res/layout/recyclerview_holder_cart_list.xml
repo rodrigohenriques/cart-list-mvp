@@ -33,7 +33,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Banana"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textview_product_price"

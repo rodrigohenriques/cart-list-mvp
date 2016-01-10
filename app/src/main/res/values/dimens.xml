@@ -7,4 +7,6 @@
     <dimen name="squareCardViewElevation">2dp</dimen>
     <dimen name="cardViewProductContainerPadding">12dp</dimen>
     <dimen name="productInfoMarginTop">8dp</dimen>
+    <dimen name="expandedTitleMargin">16dp</dimen>
+    <dimen name="productDetailInfoMargin">16dp</dimen>
 </resources>
