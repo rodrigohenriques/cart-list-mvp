@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    def application = rootProject.ext.application
+    def versions = rootProject.ext.versions
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode application.versionCode
+        versionName application.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def dependencies = rootProject.ext.dependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    compile project(':domain')
+    compile dependencies.appcompat_v7
+    compile dependencies.support_annotations
+    compile dependencies.retrofit
+    compile dependencies.jackson_converter
+    compile dependencies.dagger2
+
+    apt dependencies.dagger2_compiler
+
+    provided dependencies.jsr250
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.hamcrest
+}
