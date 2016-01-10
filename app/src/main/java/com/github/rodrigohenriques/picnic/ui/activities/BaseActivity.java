@@ -11,14 +11,21 @@ import com.github.rodrigohenriques.picnic.R;
 import com.github.rodrigohenriques.picnic.di.AppComponent;
 import com.github.rodrigohenriques.picnic.view.IView;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseActivity extends AppCompatActivity implements IView {
 
     protected AppComponent mApplicationComponent;
     private ProgressDialog mProgressDialog;
 
+    protected abstract int getLayoutResId();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutResId());
+
+        ButterKnife.bind(this);
 
         mApplicationComponent =  ((AndroidApplication) getApplication()).getApplicationComponent();
         mApplicationComponent.inject(this);

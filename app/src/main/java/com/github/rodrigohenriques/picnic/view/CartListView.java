@@ -1,0 +1,9 @@
+package com.github.rodrigohenriques.picnic.view;
+
+import com.github.rodrigohenriques.picnic.viewmodel.ProductViewModel;
+
+import java.util.List;
+
+public interface CartListView {
+    void showData(List<ProductViewModel> products);
+}
