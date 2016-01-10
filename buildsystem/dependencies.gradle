@@ -26,7 +26,12 @@ ext {
             dagger2_compiler: "com.google.dagger:dagger-compiler:2.0",
             dagger2: "com.google.dagger:dagger:2.0",
             jsr250: "javax.annotation:jsr250-api:1.0",
-            support_annotations: "com.android.support:support-annotations:23.0.1"
+            support_annotations: "com.android.support:support-annotations:23.0.1",
+            support_design: "com.android.support:design:23.0.1",
+            cardview: "com.android.support:cardview-v7:23.0.1",
+            recycler: "com.android.support:recyclerview-v7:23.0.1",
+            palette: "com.android.support:palette-v7:23.0.1",
+            picasso: "com.squareup.picasso:picasso:2.5.2"
     ]
 
     testDependencies = [

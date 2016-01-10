@@ -4,6 +4,6 @@ import com.github.rodrigohenriques.domain.entities.Product;
 
 import java.util.List;
 
-public interface GetProductsUseCase extends UseCase {
+public interface GetCartListUseCase extends UseCase {
     void execute(Callback<List<Product>> products);
 }

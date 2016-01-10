@@ -26,7 +26,7 @@ public class RemoteProductRepository implements ProductRepository {
     }
 
     @Override
-    public List<Product> getProductList() throws IOException {
+    public List<Product> getCartList() throws IOException {
         Call<CartListResponse> call = mPicNicApi.getCartList();
 
         Response<CartListResponse> response;
@@ -46,7 +46,7 @@ public class RemoteProductRepository implements ProductRepository {
     }
 
     @Override
-    public Product getProductDetail(int productId) throws IOException {
+    public Product getProductDetail(String productId) throws IOException {
         Call<ProductResponse> call = mPicNicApi.getProductDetailByProductId(productId);
 
         Response<ProductResponse> response;

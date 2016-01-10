@@ -6,6 +6,7 @@ import com.github.rodrigohenriques.domain.repository.ProductRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -16,18 +17,16 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class UseCaseImplTest {
-
+public class UseCasesTest {
+    private ProductRepository mProductRepository;
+    private List<Product> mSimpleListOfProducts;
+    private Object mResult;
+    private CountDownLatch mCountDownLatch = new CountDownLatch(1);
+    private SecondaryThreadExecutor mUiThreadExecutor;
     private final Product mOnion;
     private final Product mBanana;
-    ProductRepository mProductRepository;
-    List<Product> mSimpleListOfProducts;
-    Object mResult;
 
-    CountDownLatch mCountDownLatch = new CountDownLatch(1);
-    private SecondaryThreadExecutor mUiThreadExecutor;
-
-    public UseCaseImplTest() {
+    public UseCasesTest() throws IOException {
         mSimpleListOfProducts = new ArrayList<>();
 
         mOnion = new Product(1, "Onion", null, "lorem ipsum", 100);
@@ -39,7 +38,7 @@ public class UseCaseImplTest {
         mUiThreadExecutor = new SecondaryThreadExecutor();
         mProductRepository = mock(ProductRepository.class);
 
-        when(mProductRepository.getProductList()).thenReturn(mSimpleListOfProducts);
+        when(mProductRepository.getCartList()).thenReturn(mSimpleListOfProducts);
 
         when(mProductRepository.getProductDetail(mOnion.identifier)).thenReturn(mOnion);
         when(mProductRepository.getProductDetail(mBanana.identifier)).thenReturn(mBanana);
@@ -52,9 +51,9 @@ public class UseCaseImplTest {
 
     @Test
     public void testGetProducts() throws InterruptedException {
-        GetProductsUseCase getProductsUseCase = new GetProductsUseCaseImpl(new SecondaryThreadExecutor(), mProductRepository);
+        GetCartListUseCase getCartListUseCase = new GetCartListUseCaseImpl(new SecondaryThreadExecutor(), mProductRepository);
 
-        getProductsUseCase.execute(mDefaultCallback);
+        getCartListUseCase.execute(mDefaultCallback);
 
         mCountDownLatch.await(2, TimeUnit.SECONDS);
 

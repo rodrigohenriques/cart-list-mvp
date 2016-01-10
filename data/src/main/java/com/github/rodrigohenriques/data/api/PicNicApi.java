@@ -12,5 +12,5 @@ public interface PicNicApi {
     Call<CartListResponse> getCartList();
 
     @GET("cart/{productId}/detail")
-    Call<ProductResponse> getProductDetailByProductId(@Path("productId") int productId);
+    Call<ProductResponse> getProductDetailByProductId(@Path("productId") String productId);
 }
