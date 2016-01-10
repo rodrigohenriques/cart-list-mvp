@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:navigationBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
-        <item name="android:displayOptions">disableHome</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IView {
     @Override
     public void showError(String message) {
         final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
-        snackbar.setAction("Fechar", new View.OnClickListener() {
+        snackbar.setAction(R.string.action_ok, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 snackbar.dismiss();

@@ -6,6 +6,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ProductRepository {
-    List<Product> getProductList() throws IOException;
-    Product getProductDetail(int productId) throws IOException;
+    List<Product> getCartList() throws IOException;
+    Product getProductDetail(String productId) throws IOException;
 }

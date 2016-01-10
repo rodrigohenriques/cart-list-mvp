@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-public class GetProductDetailUseCaseImpl extends AbstractUseCase<Integer, Product> implements GetProductDetailUseCase {
+public class GetProductDetailUseCaseImpl extends AbstractUseCase<String, Product> implements GetProductDetailUseCase {
 
     ProductRepository mProductRepository;
 
@@ -19,12 +19,12 @@ public class GetProductDetailUseCaseImpl extends AbstractUseCase<Integer, Produc
     }
 
     @Override
-    public void execute(int productId, Callback<Product> callback) {
+    public void execute(String productId, Callback<Product> callback) {
         executeAsync(productId, callback);
     }
 
     @Override
-    protected Product executeOnBackground(Integer productId) throws IOException {
+    protected Product executeOnBackground(String productId) throws IOException {
         return mProductRepository.getProductDetail(productId);
     }
 }

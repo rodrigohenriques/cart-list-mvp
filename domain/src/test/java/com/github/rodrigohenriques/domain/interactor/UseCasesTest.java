@@ -38,7 +38,7 @@ public class UseCasesTest {
         mUiThreadExecutor = new SecondaryThreadExecutor();
         mProductRepository = mock(ProductRepository.class);
 
-        when(mProductRepository.getProductList()).thenReturn(mSimpleListOfProducts);
+        when(mProductRepository.getCartList()).thenReturn(mSimpleListOfProducts);
 
         when(mProductRepository.getProductDetail(mOnion.identifier)).thenReturn(mOnion);
         when(mProductRepository.getProductDetail(mBanana.identifier)).thenReturn(mBanana);
@@ -51,9 +51,9 @@ public class UseCasesTest {
 
     @Test
     public void testGetProducts() throws InterruptedException {
-        GetProductsUseCase getProductsUseCase = new GetProductsUseCaseImpl(new SecondaryThreadExecutor(), mProductRepository);
+        GetCartListUseCase getCartListUseCase = new GetCartListUseCaseImpl(new SecondaryThreadExecutor(), mProductRepository);
 
-        getProductsUseCase.execute(mDefaultCallback);
+        getCartListUseCase.execute(mDefaultCallback);
 
         mCountDownLatch.await(2, TimeUnit.SECONDS);
 

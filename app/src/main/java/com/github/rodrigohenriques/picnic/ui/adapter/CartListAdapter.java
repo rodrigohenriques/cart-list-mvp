@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.github.rodrigohenriques.picnic.R;
 import com.github.rodrigohenriques.picnic.viewmodel.ProductViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,31 +46,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         holder.productName.setText(product.getName());
         holder.productPrice.setText(product.getPrice());
 
-//        Picasso.with(mContext)
-//                .load(album.getCoverUrl())
-//                .fit()
-//                .transform(PaletteTransformation.instance())
-//                .placeholder(R.drawable.placeholder)
-//                .into(holder.albumCoverImage, new Callback.EmptyCallback() {
-//                    @Override
-//                    public void onSuccess() {
-//                        Bitmap bitmap = ((BitmapDrawable) holder.albumCoverImage.getDrawable()).getBitmap(); // Ew!
-//
-//                        Palette palette = PaletteTransformation.getPalette(bitmap);
-//
-//                        Palette.Swatch swatch = palette.getDarkVibrantSwatch();
-//
-//                        if (swatch != null) {
-//
-//                            GradientDrawable gd = new GradientDrawable(
-//                                    GradientDrawable.Orientation.BOTTOM_TOP,
-//                                    new int[] { swatch.getRgb(), Color.alpha(swatch.getRgb()) });
-//                            gd.setCornerRadius(0f);
-//
-//                            holder.albumGroupInfo.setBackground(gd);
-//                        }
-//                    }
-//                });
+        Picasso.with(mContext)
+                .load(product.getImageUrl())
+                .placeholder(R.drawable.placeholder)
+                .into(holder.productImage);
 
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +63,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         @Bind(R.id.imageview_product) ImageView productImage;
         @Bind(R.id.textview_product_name) TextView productName;
         @Bind(R.id.textview_product_price) TextView productPrice;
-        @Bind(R.id.viewgroup_product_info) ViewGroup productGroupInfo;
 
         View rootView;
 

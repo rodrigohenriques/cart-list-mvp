@@ -36,6 +36,10 @@ public class CartListActivity extends BaseActivity implements CartListView, Cart
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(mToolbar);
+
+        mApplicationComponent.inject(this);
+
+        mCartListPresenter.attachView(this);
     }
 
     @Override

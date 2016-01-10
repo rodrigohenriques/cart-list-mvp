@@ -19,4 +19,8 @@ public class ProductViewModel {
     public String getPrice() {
         return formattedPrice;
     }
+
+    public String getImageUrl() {
+        return product.imageUrl;
+    }
 }

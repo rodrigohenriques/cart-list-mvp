@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ApiUnitTest {
     @Test
-    public void testListProducts() throws Exception {
+    public void testGetCartList() throws Exception {
         PicNicApi api = new DataModule().provideApi();
 
         Call<CartListResponse> call = api.getCartList();
@@ -34,10 +34,10 @@ public class ApiUnitTest {
     }
 
     @Test
-    public void testGetAlbumDetailedById() throws Exception {
+    public void testGetProductDetailById() throws Exception {
         PicNicApi api = new DataModule().provideApi();
 
-        Call<ProductResponse> call = api.getProductDetailByProductId(1);
+        Call<ProductResponse> call = api.getProductDetailByProductId("1");
 
         Response<ProductResponse> response = call.execute();
 

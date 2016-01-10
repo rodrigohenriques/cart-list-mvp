@@ -8,11 +8,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class GetProductsUseCaseImpl extends AbstractUseCase<Void, List<Product>> implements GetProductsUseCase {
+public class GetCartListUseCaseImpl extends AbstractUseCase<Void, List<Product>> implements GetCartListUseCase {
     ProductRepository mProductRepository;
 
     @Inject
-    public GetProductsUseCaseImpl(UiThreadExecutor uiThreadExecutor, ProductRepository productRepository) {
+    public GetCartListUseCaseImpl(UiThreadExecutor uiThreadExecutor, ProductRepository productRepository) {
         super(uiThreadExecutor);
 
         mProductRepository = productRepository;
@@ -25,6 +25,6 @@ public class GetProductsUseCaseImpl extends AbstractUseCase<Void, List<Product>>
 
     @Override
     protected List<Product> executeOnBackground(Void aVoid) throws IOException {
-        return mProductRepository.getProductList();
+        return mProductRepository.getCartList();
     }
 }

@@ -8,7 +8,7 @@ import com.github.rodrigohenriques.picnic.di.AppModule;
 import com.github.rodrigohenriques.picnic.di.DaggerAppComponent;
 
 public class AndroidApplication extends Application {
-    private AppComponent applicationComponent;
+    private AppComponent mApplicationComponent;
 
     @Override public void onCreate() {
         super.onCreate();
@@ -16,13 +16,13 @@ public class AndroidApplication extends Application {
     }
 
     private void initializeInjector() {
-        this.applicationComponent = DaggerAppComponent.builder()
+        this.mApplicationComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .dataModule(new DataModule())
                 .build();
     }
 
     public AppComponent getApplicationComponent() {
-        return this.applicationComponent;
+        return this.mApplicationComponent;
     }
 }
