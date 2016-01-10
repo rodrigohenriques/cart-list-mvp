@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.rodrigohenriques.picnic.ui.custom.SquareCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/squareCardViewMargin"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="@dimen/squareCardViewCornerRadius"
+    card_view:cardElevation="@dimen/squareCardViewElevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/cardViewProductContainerPadding">
+
+        <ImageView
+            android:id="@+id/imageview_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/viewgroup_product_info"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder" />
+
+        <RelativeLayout
+            android:id="@+id/viewgroup_product_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/textview_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Banana"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_product_name"
+                android:gravity="center"
+                android:text="€ 12,50"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- Used for the ripple effect on touch -->
+    <LinearLayout
+        android:id="@+id/mainHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
+        android:orientation="horizontal" />
+
+</com.github.rodrigohenriques.picnic.ui.custom.SquareCardView>

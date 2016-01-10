@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PicNic</string>
+    <string name="progress_title">Loading</string>
+    <string name="progress_message">Wait for it...</string>
+    <string name="action_ok">Ok</string>
+    <string name="title_activity_product_detail">Product Detail</string>
 </resources>

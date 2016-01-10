@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -9,23 +9,16 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.github.rodrigohenriques.picnic"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode application.versionCode
         versionName application.versionName
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
     }
 }
 
@@ -33,21 +26,17 @@ dependencies {
     def dependencies = rootProject.ext.dependencies
     def testDependencies = rootProject.ext.testDependencies
 
-    compile project(":data")
-
-    compile dependencies.butterknife
+    compile project(':domain')
     compile dependencies.appcompat_v7
-    compile dependencies.support_design
-    compile dependencies.recycler
-    compile dependencies.cardview
-    compile dependencies.picasso
-    compile dependencies.parceler_api
+    compile dependencies.support_annotations
+    compile dependencies.retrofit
+    compile dependencies.jackson_converter
     compile dependencies.dagger2
 
     apt dependencies.dagger2_compiler
-    apt dependencies.parceler
 
     provided dependencies.jsr250
 
     testCompile testDependencies.junit
+    testCompile testDependencies.hamcrest
 }

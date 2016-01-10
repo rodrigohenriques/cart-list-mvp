@@ -1,0 +1,43 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    application = [
+            versionCode: 1,
+            versionName: "0.1.0"
+    ]
+
+    versions = [
+            buildTools: "23.0.2",
+            minSdk: 14,
+            targetSdk: 22,
+            compileSdk: 23
+    ]
+
+    dependencies = [
+            butterknife: "com.jakewharton:butterknife:7.0.1",
+            appcompat_v7: "com.android.support:appcompat-v7:23.1.1",
+            javax_inject: "javax.inject:javax.inject:1",
+            retrofit: "com.squareup.retrofit:retrofit:2.0.0-beta2",
+            jackson_converter: "com.squareup.retrofit:converter-jackson:2.0.0-beta2",
+            dagger2_compiler: "com.google.dagger:dagger-compiler:2.0",
+            dagger2: "com.google.dagger:dagger:2.0",
+            jsr250: "javax.annotation:jsr250-api:1.0",
+            support_annotations: "com.android.support:support-annotations:23.0.1",
+            support_design: "com.android.support:design:23.0.1",
+            cardview: "com.android.support:cardview-v7:23.0.1",
+            recycler: "com.android.support:recyclerview-v7:23.0.1",
+            picasso: "com.squareup.picasso:picasso:2.5.2",
+            parceler_api: "org.parceler:parceler-api:1.0.4",
+            parceler: "org.parceler:parceler:1.0.4"
+    ]
+
+    testDependencies = [
+            junit: "junit:junit:4.12",
+            mockito: "org.mockito:mockito-core:1.+",
+            hamcrest: "org.hamcrest:hamcrest-all:1.3"
+    ]
+}
