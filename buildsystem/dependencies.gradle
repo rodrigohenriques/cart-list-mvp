@@ -1,0 +1,28 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    application = [
+            versionCode: 1,
+            versionName: "1.0"
+    ]
+
+    versions = [
+            buildTools: "23.0.2",
+            minSdk: 14,
+            targetSdk: 22,
+            compileSdk: 23
+    ]
+
+    dependencies = [
+            butterknife: "com.jakewharton:butterknife:7.0.1",
+            appcompat_v7: "com.android.support:appcompat-v7:23.1.1"
+    ]
+
+    testDependencies = [
+            junit: "junit:junit:4.12"
+    ]
+}
