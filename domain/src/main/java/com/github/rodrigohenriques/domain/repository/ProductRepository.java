@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ProductRepository {
     // TODO: fix this exceptions
-    List<Product> getCartList() throws Exception;
+    List<Product> getCartList() throws IOException;
     Product getProductDetail(String productId) throws IOException;
 }

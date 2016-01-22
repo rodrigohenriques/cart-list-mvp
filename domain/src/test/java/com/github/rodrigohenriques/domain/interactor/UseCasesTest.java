@@ -29,8 +29,8 @@ public class UseCasesTest {
     public UseCasesTest() throws IOException {
         mSimpleListOfProducts = new ArrayList<>();
 
-        mOnion = new Product(1, "Onion", null, "lorem ipsum", 100);
-        mBanana = new Product(2, "Banana", null, "lorem ipsum", 200);
+        mOnion = new Product("1", "Onion", null, "lorem ipsum", 100);
+        mBanana = new Product("2", "Banana", null, "lorem ipsum", 200);
 
         mSimpleListOfProducts.add(mOnion);
         mSimpleListOfProducts.add(mBanana);
@@ -40,8 +40,8 @@ public class UseCasesTest {
 
         when(mProductRepository.getCartList()).thenReturn(mSimpleListOfProducts);
 
-        when(mProductRepository.getProductDetail(mOnion.identifier)).thenReturn(mOnion);
-        when(mProductRepository.getProductDetail(mBanana.identifier)).thenReturn(mBanana);
+        when(mProductRepository.getProductDetail(mOnion.getIdentifier())).thenReturn(mOnion);
+        when(mProductRepository.getProductDetail(mBanana.getIdentifier())).thenReturn(mBanana);
     }
 
     @Before
@@ -64,7 +64,7 @@ public class UseCasesTest {
     public void testGetProductDetail() throws InterruptedException {
         GetProductDetailUseCase getProductDetailUseCase = new GetProductDetailUseCaseImpl(mUiThreadExecutor, mProductRepository);
 
-        getProductDetailUseCase.execute(mBanana.identifier, mDefaultCallback);
+        getProductDetailUseCase.execute(mBanana.getIdentifier(), mDefaultCallback);
 
         mCountDownLatch.await(2, TimeUnit.SECONDS);
 
